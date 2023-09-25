@@ -1,10 +1,16 @@
-
+import { Searcher } from './Components/Searcher';
 import './App.css';
+import { Col } from 'antd';
+import { PokemonList } from './Components/PokemonList';
 
 function App() {
   return (
     <div className="App">
-      <h1>pokedok</h1>
+      <Col span={8} offset={8}>
+      <Searcher/>
+      </Col>
+    <PokemonList/>
+
     </div>
   );
 }
