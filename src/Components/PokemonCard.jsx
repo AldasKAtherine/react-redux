@@ -2,10 +2,10 @@ import { StarOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 
-const PokemonCard = () => {
+const PokemonCard = ({name}) => {
   return (
     <Card
-      title="po"
+      title={name}
       extra={<StarOutlined />}
       cover={
         <img
