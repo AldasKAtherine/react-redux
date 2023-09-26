@@ -14,7 +14,7 @@ const PokemonCard = ({name}) => {
         />
       }
     >
-      <StarOutlined />
+      
       <Meta description="fire, magic" />
     </Card>
   );
