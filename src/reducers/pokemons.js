@@ -1,4 +1,4 @@
-import { SET_POKEMONS } from "../Components/actions/types";
+import { SET_POKEMONS } from "../actions/types";
 
 const initialState = {
   pokemons: [],
