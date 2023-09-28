@@ -3,30 +3,31 @@ import "./App.css";
 import logo from "./statics/logo.svg";
 import { Col, Spin } from "antd";
 import { PokemonList } from "./Components/PokemonList";
-import { useEffect} from "react";
-import { getPokemon } from "./api";
-import { getPokemonsWithDetails, setLoading} from "./actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { fetchPokemonsWithDetails } from "./slides/dataSlice";
 
 //App({ pokemons, setPokemons })
 function App() {
   //const [pokemons, setPokemons] = useState([]);
-  const pokemons = useSelector(state =>state.pokemons);
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
+  //.getIn(['data', 'pokemons']))
+
   const dispatch = useDispatch();
-  const loading = useSelector(state=>state.loading);
+  const loading = useSelector((state) => state.ui.loading);
+    //get(["ui", "loading"], shallowEqual)
+  
 
   useEffect(() => {
-    const fetchPokemons = async () => {
-      dispatch(setLoading(true));
-      const pokemonsRes = await getPokemon();
-      // const pokemonDetailed = await Promise.all(pokemonsRes.map(poke => getPokemonsDetails(poke)));
-      // dispatch(setPokemons(pokemonsRes));
-      dispatch(getPokemonsWithDetails(pokemonsRes));
-      dispatch(setLoading(false));
-    };
-    
-
-    fetchPokemons();
+    // const fetchPokemons = async () => {
+    //   dispatch(setLoading(true));
+    //   const pokemonsRes = await getPokemon();
+    //   // const pokemonDetailed = await Promise.all(pokemonsRes.map(poke => getPokemonsDetails(poke)));
+    //   // dispatch(setPokemons(pokemonsRes));
+    //   dispatch(getPokemonsWithDetails(pokemonsRes));
+    //   dispatch(setLoading(false));
+    // };
+    dispatch(fetchPokemonsWithDetails());
   }, []);
   return (
     <div className="App">
@@ -36,11 +37,13 @@ function App() {
       <Col span={8} offset={8}>
         <Searcher />
       </Col>
-      {loading ? (<Col span={12} offset={12}>
-      <Spin spinning size="large" />
-      </Col>) :  (<PokemonList pokemons={pokemons} />)}
-    
-     
+      {loading ? (
+        <Col span={12} offset={12}>
+          <Spin spinning size="large" />
+        </Col>
+      ) : (
+        <PokemonList pokemons={pokemons} />
+      )}
     </div>
   );
 }
