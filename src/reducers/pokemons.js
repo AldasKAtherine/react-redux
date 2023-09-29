@@ -1,4 +1,4 @@
-import { fromJS } from "immutable";
+/*import { fromJS } from "immutable";
 import { SET_FAVORITE, SET_POKEMONS } from "../actions/types";
 
 const initialState = fromJS({
@@ -38,3 +38,4 @@ export const pokemonsReducer = (state = initialState, action) => {
       return state;
   }
 };
+*/

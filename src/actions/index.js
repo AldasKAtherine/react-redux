@@ -1,5 +1,5 @@
 
-
+/*
 import { getPokemonDetails } from "../api";
 import { SET_FAVORITE, SET_LOADING, SET_POKEMONS } from "./types";
 
@@ -27,3 +27,4 @@ export const getPokemonsWithDetails =
     type:SET_FAVORITE,
     payload
   })
+*/

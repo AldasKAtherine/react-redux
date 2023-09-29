@@ -2,7 +2,7 @@ import { PokemonCard } from "./PokemonCard";
 import "./PokemonList.css";
 
 const PokemonList = ({ pokemons }) => {
-  console.log('poke', pokemons);
+ 
   return (
     <div className="PokemonList">
      

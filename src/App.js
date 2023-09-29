@@ -7,26 +7,12 @@ import { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchPokemonsWithDetails } from "./slides/dataSlice";
 
-//App({ pokemons, setPokemons })
 function App() {
-  //const [pokemons, setPokemons] = useState([]);
-  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  //.getIn(['data', 'pokemons']))
-
+  const pokemons = useSelector((state) => state.data.pokemonsFiltered, shallowEqual);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.ui.loading);
-    //get(["ui", "loading"], shallowEqual)
-  
-
+  console.log(pokemons);
   useEffect(() => {
-    // const fetchPokemons = async () => {
-    //   dispatch(setLoading(true));
-    //   const pokemonsRes = await getPokemon();
-    //   // const pokemonDetailed = await Promise.all(pokemonsRes.map(poke => getPokemonsDetails(poke)));
-    //   // dispatch(setPokemons(pokemonsRes));
-    //   dispatch(getPokemonsWithDetails(pokemonsRes));
-    //   dispatch(setLoading(false));
-    // };
     dispatch(fetchPokemonsWithDetails());
   }, []);
   return (
@@ -47,12 +33,5 @@ function App() {
     </div>
   );
 }
-// const mapStateToProps = (state) => ({
-//   pokemons: state.pokemons,
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   setPokemons: (value) => dispatch(setPokemonsActions(value)),
-// });
 
 export default App;

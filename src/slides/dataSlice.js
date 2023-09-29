@@ -4,15 +4,12 @@ import { setLoading } from "./uiSlice";
 
 const initialState = {
   pokemons: [],
+  pokemonsFiltered: [],
 };
 export const fetchPokemonsWithDetails = createAsyncThunk(
   "data/fetchPokemonsWithDetails",
   async (_, { dispatch }) => {
-    // dispatch loader
-    //fetch
-    //otravez dispatch
     dispatch(setLoading(true));
-
     const pokemonsRes = await getPokemon();
     const pokemonsDetailed = await Promise.all(
       pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
@@ -28,19 +25,27 @@ export const dataSlice = createSlice({
   reducers: {
     setPokemos: (state, action) => {
       state.pokemons = action.payload;
+      state.pokemonsFiltered = action.payload;
     },
     setFavorite: (state, action) => {
-      const currentPokemonIndex = state.pokemons.findIndex((pokemon) => {
+      const currentPokemonIndex = state.pokemonsFiltered.findIndex((pokemon) => {
         return pokemon.id === action.payload.pokemonId;
       });
 
       if (currentPokemonIndex >= 0) {
-        const isFavorite = state.pokemons[currentPokemonIndex].favorite;
+        const isFavorite = state.pokemonsFiltered[currentPokemonIndex].favorite;
 
-        state.pokemons[currentPokemonIndex].favorite = !isFavorite;
+        state.pokemonsFiltered[currentPokemonIndex].favorite = !isFavorite;
       }
+    },
+    setFilter: (state, action) => {
+      const pokemonsFiltered = state.pokemons.filter((pokemon) =>
+        pokemon.name.includes(action.payload)
+      );
+      state.pokemonsFiltered = pokemonsFiltered;
     },
   },
 });
-export const { setFavorite, setPokemos } = dataSlice.actions;
+export const { setFavorite, setPokemos, setFilter } =
+  dataSlice.actions;
 export default dataSlice.reducer;

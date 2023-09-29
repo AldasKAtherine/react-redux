@@ -1,4 +1,4 @@
-import { fromJS } from "immutable";
+/*import { fromJS } from "immutable";
 import {SET_LOADING } from "../actions/types";
 
 const initialState = fromJS({
@@ -15,4 +15,4 @@ export const uiReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+};*/
