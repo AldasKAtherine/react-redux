@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-redux/static/css/main.6e2ea2d1.css",
+    "main.js": "/react-redux/static/js/main.33badbb2.js",
+    "static/media/logo.svg": "/react-redux/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
+    "index.html": "/react-redux/index.html",
+    "main.6e2ea2d1.css.map": "/react-redux/static/css/main.6e2ea2d1.css.map",
+    "main.33badbb2.js.map": "/react-redux/static/js/main.33badbb2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e2ea2d1.css",
+    "static/js/main.33badbb2.js"
+  ]
+}
